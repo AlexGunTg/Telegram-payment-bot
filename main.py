@@ -62,5 +62,13 @@ async def handle_receipt(message: types.Message):
     await bot.send_photo(chat_id=admin_username, photo=message.photo[-1].file_id, caption=caption)
     await message.answer("Спасибо! Ваш чек отправлен на проверку. Мы свяжемся с вами в ближайшее время.")
 
+@dp.message_handler(content_types=types.ContentType.DOCUMENT)
+async def handle_document_receipt(message: types.Message):
+    admin_username = ADMIN_USERNAME
+    file_id = message.document.file_id
+    caption = f"📎 Новый файл от @{message.from_user.username or message.from_user.id}"
+    await bot.send_document(chat_id=admin_username, document=file_id, caption=caption)
+    await message.answer("Файл получен. Спасибо! Мы свяжемся с вами после проверки.")
+
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)
