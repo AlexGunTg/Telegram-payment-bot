@@ -39,7 +39,7 @@ async def back_to_start(message: types.Message):
 @dp.message_handler(lambda message: message.text in ["Рубли", "PayPal", "Евро", "Доллар", "Гривна", "USDT в Binance"])
 async def send_payment_details(message: types.Message):
     text = {
-        "Рубли": "По номеру телефона: +79299998069",
+        "Рубли": "Карта Тинькофф: 5536914069397663",
         "PayPal": "PayPal: jivoemilo@gmail.com",
         "Евро": ("IBAN: GB48CLJU00997186505114\n"
                  "Карта: 5375 4199 0916 1356\n"
